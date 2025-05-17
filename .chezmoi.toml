@@ -1,0 +1,12 @@
+[defaults]
+    umask = 0022
+
+[template]
+    extension = "tmpl"
+
+[merge]
+    command = "vimdiff"
+
+[git]
+    autoCommit = true
+    autoPush = false
