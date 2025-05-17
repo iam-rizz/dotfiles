@@ -43,3 +43,17 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ -f ~/.zsh_welcome ]] && source ~/.zsh_welcome
+
+toggle_p10k_style() {
+  config="$HOME/.config/chezmoi/chezmoi.toml"
+  current=$(grep 'p10k_style' "$config" | cut -d'"' -f2)
+  if [[ "$current" == "neon" ]]; then
+    sed -i 's/p10k_style = "neon"/p10k_style = "minimal"/' "$config"
+    echo "✔️ Switched to minimal"
+  else
+    sed -i 's/p10k_style = "minimal"/p10k_style = "neon"/' "$config"
+    echo "✔️ Switched to neon"
+  fi
+  chezmoi apply
+}
+alias style!='toggle_p10k_style'

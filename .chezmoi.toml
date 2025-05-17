@@ -1,5 +1,5 @@
 [defaults]
-    umask = 0022
+    umask = "0022"
 
 [template]
     extension = "tmpl"
@@ -10,3 +10,6 @@
 [git]
     autoCommit = true
     autoPush = false
+
+[data]
+    p10k_style = "minimalis"
