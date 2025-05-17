@@ -21,3 +21,12 @@ Ganti style dengan:
 cp ~/.config/styles/neon/p10k.zsh ~/.p10k.zsh
 source ~/.zshrc
 ```
+```bash
+# Ganti ke minimal
+chezmoi data --modify --p10k_style minimal
+chezmoi apply
+
+# Ganti ke neon
+chezmoi data --modify --p10k_style neon
+chezmoi apply
+```
