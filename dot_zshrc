@@ -42,3 +42,4 @@ export EDITOR=nano
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ -f ~/.zsh_welcome ]] && source ~/.zsh_welcome
