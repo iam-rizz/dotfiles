@@ -9,7 +9,7 @@ sh -c "$(curl -fsLS get.chezmoi.io)"
 
 ## Clone dan apply dotfiles
 ```bash
-chezmoi init github.com/USERNAME/dotfiles --apply
+chezmoi init github.com/iam-rizz/dotfiles --apply
 ```
 
 ## Style Prompt
