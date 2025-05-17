@@ -12,4 +12,4 @@
     autoPush = false
 
 [data]
-    p10k_style = "minimalis"
+    p10k_style = "minimal"
