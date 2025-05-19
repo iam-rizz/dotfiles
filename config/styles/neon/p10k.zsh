@@ -36,6 +36,13 @@
     os_icon                 # os identifier
     dir                     # current directory
     vcs                     # git status
+    node_version            # node.js version
+    go_version              # go version
+    rust_version            # rustc version
+    php_version             # php version
+    java_version            # java version
+    python_version          # python version
+    docker                  # docker status
     # =========================[ Line #2 ]=========================
     newline                 # \n
     prompt_char             # prompt symbol

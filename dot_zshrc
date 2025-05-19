@@ -3,6 +3,59 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Zsh config with zgen and plugin setup
+export DOTFILES="$HOME/.dotfiles"
+
+# Load zgen
+source "$HOME/.zgen/zgen.zsh"
+
+if ! zgen saved; then
+    echo "Creating a zgen save"
+    zgen oh-my-zsh
+    # Oh-My-Zsh plugins
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/history-substring-search
+    zgen oh-my-zsh plugins/sudo
+    zgen oh-my-zsh plugins/command-not-found
+    zgen oh-my-zsh plugins/npm
+    zgen oh-my-zsh plugins/yarn
+    zgen oh-my-zsh plugins/nvm
+    zgen oh-my-zsh plugins/fnm
+    zgen oh-my-zsh plugins/extract
+    zgen oh-my-zsh plugins/ssh-agent
+    zgen oh-my-zsh plugins/gpg-agent
+    zgen oh-my-zsh plugins/macos
+    zgen oh-my-zsh plugins/vscode
+    zgen oh-my-zsh plugins/gh
+    zgen oh-my-zsh plugins/common-aliases
+    zgen oh-my-zsh plugins/direnv
+    zgen oh-my-zsh plugins/docker
+    zgen oh-my-zsh plugins/docker-compose
+    zgen oh-my-zsh plugins/node
+    zgen oh-my-zsh plugins/deno
+    # Custom plugins
+    zgen load chriskempson/base16-shell
+    zgen load djui/alias-tips
+    zgen load marzocchi/zsh-notify
+    zgen load hlissner/zsh-autopair
+    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load zsh-users/zsh-autosuggestions
+    zgen load Aloxaf/fzf-tab
+    zgen load zsh-users/zsh-completions src
+    # Prompt/theme
+    zgen load romkatv/powerlevel10k powerlevel10k
+    # Uncomment below if you want spaceship as alternative
+    # zgen load spaceship-prompt/spaceship
+    zgen load MichaelAquilina/zsh-you-should-use
+    zgen load zdharma-continuum/history-search-multi-word
+    zgen save
+fi
+
+# Load Powerlevel10k theme
+if [[ -r "$HOME/.p10k.zsh" ]]; then
+  source "$HOME/.p10k.zsh"
+fi
+
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
