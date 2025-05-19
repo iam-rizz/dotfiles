@@ -33,6 +33,16 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/docker-compose
     zgen oh-my-zsh plugins/node
     zgen oh-my-zsh plugins/deno
+    zgen oh-my-zsh plugins/python
+    zgen oh-my-zsh plugins/ruby
+    zgen oh-my-zsh plugins/golang
+    zgen oh-my-zsh plugins/rust
+    zgen oh-my-zsh plugins/java
+    zgen oh-my-zsh plugins/php
+    zgen oh-my-zsh plugins/perl
+    zgen oh-my-zsh plugins/haskell
+    zgen oh-my-zsh plugins/elixir
+    zgen oh-my-zsh plugins/scala
     # Custom plugins
     zgen load chriskempson/base16-shell
     zgen load djui/alias-tips
