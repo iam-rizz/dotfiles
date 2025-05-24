@@ -104,3 +104,41 @@ typeset -g POWERLEVEL9K_TIME_FORMAT='%H:%M'
 
 # -- Icons ---------------------------------------------------------------
 typeset -g POWERLEVEL9K_MODE=nerdfont-complete
+
+# -- Programming Language Icons & Settings ----------------------------------
+# Python
+typeset -g POWERLEVEL9K_PYENV_FOREGROUND=37
+typeset -g POWERLEVEL9K_PYENV_PROMPT_ALWAYS_SHOW=true
+typeset -g POWERLEVEL9K_PYENV_SHOW_SYSTEM=true
+typeset -g POWERLEVEL9K_PYENV_SHOW_ON_UPGLOB='requirements.txt|setup.py|Pipfile|*.py|.python-version'
+typeset -g POWERLEVEL9K_PYENV_VISUAL_IDENTIFIER_EXPANSION=''
+
+# Node.js
+typeset -g POWERLEVEL9K_NODE_VERSION_FOREGROUND=70
+typeset -g POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY=false
+typeset -g POWERLEVEL9K_NODE_VERSION_SHOW_ON_UPGLOB='package.json|package-lock.json|node_modules|*.js|*.jsx|*.ts|*.tsx'
+typeset -g POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
+
+# Go
+typeset -g POWERLEVEL9K_GO_VERSION_FOREGROUND=37
+typeset -g POWERLEVEL9K_GO_VERSION_PROJECT_ONLY=false
+typeset -g POWERLEVEL9K_GO_VERSION_SHOW_ON_UPGLOB='go.mod|go.sum|*.go'
+typeset -g POWERLEVEL9K_GO_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
+
+# Rust
+typeset -g POWERLEVEL9K_RUST_VERSION_FOREGROUND=166
+typeset -g POWERLEVEL9K_RUST_VERSION_PROJECT_ONLY=false
+typeset -g POWERLEVEL9K_RUST_VERSION_SHOW_ON_UPGLOB='Cargo.toml|Cargo.lock|*.rs'
+typeset -g POWERLEVEL9K_RUST_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
+
+# PHP
+typeset -g POWERLEVEL9K_PHP_VERSION_FOREGROUND=99
+typeset -g POWERLEVEL9K_PHP_VERSION_PROJECT_ONLY=false
+typeset -g POWERLEVEL9K_PHP_VERSION_SHOW_ON_UPGLOB='composer.json|*.php'
+typeset -g POWERLEVEL9K_PHP_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
+
+# Java
+typeset -g POWERLEVEL9K_JAVA_VERSION_FOREGROUND=32
+typeset -g POWERLEVEL9K_JAVA_VERSION_PROJECT_ONLY=false
+typeset -g POWERLEVEL9K_JAVA_VERSION_SHOW_ON_UPGLOB='pom.xml|build.gradle|*.java|*.jar'
+typeset -g POWERLEVEL9K_JAVA_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
