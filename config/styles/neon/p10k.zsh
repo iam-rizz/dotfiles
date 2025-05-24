@@ -36,6 +36,10 @@
     os_icon                 # os identifier
     dir                     # current directory
     vcs                     # git status
+    pyenv                   # python version from pyenv
+    node_version           # node.js version
+    go_version            # go version
+    rust_version          # rustc version
     node_version            # node.js version
     go_version              # go version
     rust_version            # rustc version
@@ -1029,7 +1033,7 @@
   typeset -g POWERLEVEL9K_PYENV_CONTENT_EXPANSION='${P9K_CONTENT}${${P9K_CONTENT:#$P9K_PYENV_PYTHON_VERSION(|/*)}:+ $P9K_PYENV_PYTHON_VERSION}'
 
   # Custom icon.
-  # typeset -g POWERLEVEL9K_PYENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_PYENV_VISUAL_IDENTIFIER_EXPANSION=''
 
   ################[ goenv: go environment (https://github.com/syndbg/goenv) ]################
   # Goenv color.
@@ -1085,7 +1089,7 @@
   typeset -g POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY=false
   typeset -g POWERLEVEL9K_NODE_VERSION_SHOW_ON_UPGLOB='package.json|package-lock.json|node_modules|*.js|*.jsx|*.ts|*.tsx'
   # Custom icon.
-  # typeset -g POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
 
   #######################[ go_version: go version (https://golang.org) ]########################
   # Go version color.
@@ -1094,7 +1098,7 @@
   typeset -g POWERLEVEL9K_GO_VERSION_PROJECT_ONLY=false
   typeset -g POWERLEVEL9K_GO_VERSION_SHOW_ON_UPGLOB='go.mod|go.sum|*.go'
   # Custom icon.
-  # typeset -g POWERLEVEL9K_GO_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_GO_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
 
   #################[ rust_version: rustc version (https://www.rust-lang.org) ]##################
   # Rust version color.
@@ -1103,7 +1107,7 @@
   typeset -g POWERLEVEL9K_RUST_VERSION_PROJECT_ONLY=false
   typeset -g POWERLEVEL9K_RUST_VERSION_SHOW_ON_UPGLOB='Cargo.toml|Cargo.lock|*.rs'
   # Custom icon.
-  # typeset -g POWERLEVEL9K_RUST_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_RUST_VERSION_VISUAL_IDENTIFIER_EXPANSION=''
 
   ###############[ dotnet_version: .NET version (https://dotnet.microsoft.com) ]################
   # .NET version color.
