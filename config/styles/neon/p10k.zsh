@@ -1011,7 +1011,8 @@
   typeset -g POWERLEVEL9K_PYENV_SOURCES=(shell local global)
   # If set to false, hide python version if it's the same as global:
   # $(pyenv version-name) == $(pyenv global).
-  typeset -g POWERLEVEL9K_PYENV_PROMPT_ALWAYS_SHOW=false
+  typeset -g POWERLEVEL9K_PYENV_PROMPT_ALWAYS_SHOW=true
+  typeset -g POWERLEVEL9K_PYENV_SHOW_ON_UPGLOB='requirements.txt|setup.py|Pipfile|*.py|.python-version'
   # If set to false, hide python version if it's equal to "system".
   typeset -g POWERLEVEL9K_PYENV_SHOW_SYSTEM=true
 
@@ -1081,7 +1082,8 @@
   # Node version color.
   typeset -g POWERLEVEL9K_NODE_VERSION_FOREGROUND=70
   # Show node version only when in a directory tree containing package.json.
-  typeset -g POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY=true
+  typeset -g POWERLEVEL9K_NODE_VERSION_PROJECT_ONLY=false
+  typeset -g POWERLEVEL9K_NODE_VERSION_SHOW_ON_UPGLOB='package.json|package-lock.json|node_modules|*.js|*.jsx|*.ts|*.tsx'
   # Custom icon.
   # typeset -g POWERLEVEL9K_NODE_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -1089,7 +1091,8 @@
   # Go version color.
   typeset -g POWERLEVEL9K_GO_VERSION_FOREGROUND=37
   # Show go version only when in a go project subdirectory.
-  typeset -g POWERLEVEL9K_GO_VERSION_PROJECT_ONLY=true
+  typeset -g POWERLEVEL9K_GO_VERSION_PROJECT_ONLY=false
+  typeset -g POWERLEVEL9K_GO_VERSION_SHOW_ON_UPGLOB='go.mod|go.sum|*.go'
   # Custom icon.
   # typeset -g POWERLEVEL9K_GO_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
@@ -1097,7 +1100,8 @@
   # Rust version color.
   typeset -g POWERLEVEL9K_RUST_VERSION_FOREGROUND=37
   # Show rust version only when in a rust project subdirectory.
-  typeset -g POWERLEVEL9K_RUST_VERSION_PROJECT_ONLY=true
+  typeset -g POWERLEVEL9K_RUST_VERSION_PROJECT_ONLY=false
+  typeset -g POWERLEVEL9K_RUST_VERSION_SHOW_ON_UPGLOB='Cargo.toml|Cargo.lock|*.rs'
   # Custom icon.
   # typeset -g POWERLEVEL9K_RUST_VERSION_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
