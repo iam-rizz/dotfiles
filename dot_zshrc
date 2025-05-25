@@ -179,6 +179,17 @@ toggle_p10k_style() {
       if [ -z "$2" ]; then
         echo "❌ Please specify a theme name"
         list_themes
+        return
+      fi
+      
+      # Check if we have additional welcome flag
+      if [ "$3" = "--welcome" ]; then
+        if [ "$4" = "on" ] || [ "$4" = "off" ]; then
+          set_theme "$2"
+          toggle_welcome "$4"
+        else
+          echo "❌ Invalid welcome option. Use 'on' or 'off'"
+        fi
       else
         set_theme "$2"
       fi
@@ -188,20 +199,28 @@ toggle_p10k_style() {
       ;;
     "-h"|"--help")
       echo "Usage:"
-      echo "  style!                    Toggle between neon and minimal themes"
-      echo "  style! -l, --list         List available themes"
-      echo "  style! set <theme>        Switch to specified theme"
-      echo "  style! --welcome on|off   Enable or disable welcome message"
-      echo "  style! -h, --help         Show this help message"
+      echo "  style!                              Toggle between neon and minimal themes"
+      echo "  style! -l, --list                   List available themes"
+      echo "  style! set <theme>                  Switch to specified theme"
+      echo "  style! set <theme> --welcome on|off Switch theme and toggle welcome message"
+      echo "  style! --welcome on|off             Enable or disable welcome message"
+      echo "  style! -h, --help                   Show this help message"
       ;;
     *)
-      # Default toggle behavior (for backward compatibility)
-      current=$(grep 'p10k_style' "$config" | cut -d'"' -f2)
-      if [[ "$current" == "neon" ]]; then
-        set_theme "minimal"
-      else
-        set_theme "neon"
-      fi
+      echo "╭─────────────── 🎨 P10K Theme Manager ───────────────╮"
+      echo "│                                                      │"
+      echo "│  Commands:                                          │"
+      echo "│  style! -l, --list       List available themes      │"
+      echo "│  style! set <theme>      Switch to specified theme  │"
+      echo "│  style! --welcome on|off Enable/disable welcome     │"
+      echo "│                                                      │"
+      echo "│  Combined Commands:                                 │"
+      echo "│  style! set <theme> --welcome on|off               │"
+      echo "│                                                      │"
+      echo "│  Current Theme: $(grep 'p10k_style' "$config" | cut -d'"' -f2)                              │"
+      echo "│  Welcome Message: $([ -f "$welcome_file" ] && echo "enabled" || echo "disabled")                          │"
+      echo "│                                                      │"
+      echo "╰──────────────────────────────────────────────────╯"
       ;;
   esac
 }
