@@ -135,7 +135,7 @@ toggle_p10k_style() {
       current=$(grep 'p10k_style' "$config" | cut -d'"' -f2)
       sed -i "s/p10k_style = \"$current\"/p10k_style = \"$theme\"/" "$config"
       echo "✔️ Switched to $theme"
-      chezmoi apply
+      chezmoi apply --force
     else
       echo "❌ Theme '$theme' not found"
       list_themes
