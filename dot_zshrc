@@ -92,6 +92,7 @@ alias gc='git commit'
 alias gp='git push'
 alias update='sudo apt update && sudo apt upgrade -y'
 alias ports='ss -tuln'
+alias e='$EDITOR'
 alias reload!='source ~/.zshrc'
 
 alias dps='docker ps --format "table {{.Names}} {{.Image}}      {{.Status}}"'
@@ -101,7 +102,7 @@ alias drm='docker rm -f'
 alias dimg='docker images'
 alias drmi='docker rmi'
 
-export EDITOR=nano
+export EDITOR=micro
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -109,14 +110,101 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 toggle_p10k_style() {
   config="$HOME/.config/chezmoi/chezmoi.toml"
-  current=$(grep 'p10k_style' "$config" | cut -d'"' -f2)
-  if [[ "$current" == "neon" ]]; then
-    sed -i 's/p10k_style = "neon"/p10k_style = "minimal"/' "$config"
-    echo "✔️ Switched to minimal"
-  else
-    sed -i 's/p10k_style = "minimal"/p10k_style = "neon"/' "$config"
-    echo "✔️ Switched to neon"
-  fi
-  chezmoi apply
+  styles_dir="$HOME/.config/chezmoi/config/styles"
+  welcome_file="$HOME/.zsh_welcome"
+  
+  # Function to list available themes
+  list_themes() {
+    echo "Available themes:"
+    for theme in "$styles_dir"/*; do
+      if [ -d "$theme" ]; then
+        theme_name=$(basename "$theme")
+        if [ "$(grep 'p10k_style' "$config" | cut -d'"' -f2)" = "$theme_name" ]; then
+          echo "  * $theme_name (current)"
+        else
+          echo "  - $theme_name"
+        fi
+      fi
+    done
+  }
+
+  # Function to set theme
+  set_theme() {
+    theme="$1"
+    if [ -d "$styles_dir/$theme" ]; then
+      current=$(grep 'p10k_style' "$config" | cut -d'"' -f2)
+      sed -i "s/p10k_style = \"$current\"/p10k_style = \"$theme\"/" "$config"
+      echo "✔️ Switched to $theme"
+      chezmoi apply
+    else
+      echo "❌ Theme '$theme' not found"
+      list_themes
+    fi
+  }
+
+  # Function to toggle welcome message
+  toggle_welcome() {
+    case "$1" in
+      "on")
+        if [ -f "$welcome_file" ]; then
+          echo "✔️ Welcome message is already enabled"
+        else
+          touch "$welcome_file"
+          echo "✔️ Welcome message enabled"
+          source ~/.zshrc
+        fi
+        ;;
+      "off")
+        if [ -f "$welcome_file" ]; then
+          rm "$welcome_file"
+          echo "✔️ Welcome message disabled"
+          source ~/.zshrc
+        else
+          echo "✔️ Welcome message is already disabled"
+        fi
+        ;;
+      *)
+        echo "❌ Please specify 'on' or 'off' for welcome message"
+        echo "Usage: style! --welcome on|off"
+        ;;
+    esac
+  }
+
+  # Parse arguments
+  case "$1" in
+    "-l"|"--list"|"list")
+      list_themes
+      ;;
+    "set")
+      if [ -z "$2" ]; then
+        echo "❌ Please specify a theme name"
+        list_themes
+      else
+        set_theme "$2"
+      fi
+      ;;
+    "--welcome")
+      toggle_welcome "$2"
+      ;;
+    "-h"|"--help")
+      echo "Usage:"
+      echo "  style!                    Toggle between neon and minimal themes"
+      echo "  style! -l, --list         List available themes"
+      echo "  style! set <theme>        Switch to specified theme"
+      echo "  style! --welcome on|off   Enable or disable welcome message"
+      echo "  style! -h, --help         Show this help message"
+      ;;
+    *)
+      # Default toggle behavior (for backward compatibility)
+      current=$(grep 'p10k_style' "$config" | cut -d'"' -f2)
+      if [[ "$current" == "neon" ]]; then
+        set_theme "minimal"
+      else
+        set_theme "neon"
+      fi
+      ;;
+  esac
 }
+
+# Update the alias to accept arguments
 alias style!='toggle_p10k_style'
