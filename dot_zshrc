@@ -110,7 +110,7 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 toggle_p10k_style() {
   config="$HOME/.config/chezmoi/chezmoi.toml"
-  styles_dir="$HOME/.config/chezmoi/config/styles"
+  styles_dir="$HOME/.local/share/chezmoi/config/styles"
   welcome_file="$HOME/.zsh_welcome"
   
   # Function to list available themes
