@@ -136,6 +136,7 @@ toggle_p10k_style() {
       sed -i "s/p10k_style = \"$current\"/p10k_style = \"$theme\"/" "$config"
       echo "✔️ Switched to $theme"
       chezmoi apply --force
+      source ~/.zshrc
     else
       echo "❌ Theme '$theme' not found"
       list_themes
